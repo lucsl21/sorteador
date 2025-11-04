@@ -78,7 +78,7 @@ st.markdown("""
 
 # Logo e Cabeçalho
 st.image("https://pharmic.com.br/Themes/FormulaCertaTheme/Content/images/logo.webp", width=260)  # Ajuste o tamanho se quiser
-st.markdown("<h1 class='main-header'>🎉SORTEIO ENCONTRO PHARMIC</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header' style='color:#1F3A7D;'>🎉 SORTEIO ENCONTRO PHARMIC</h1>", unsafe_allow_html=True)
 
 # Sidebar para controles
 with st.sidebar:
