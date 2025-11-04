@@ -47,10 +47,22 @@ st.markdown("""
     }
     .countdown {
         text-align: center;
-        color: #ff6600;
+        color: #2F3286;
         font-size: 36px;
         font-weight: bold;
         padding: 20px;
+    }
+    /* 🔵 Cor dos botões alterada */
+    .stButton > button {
+        background-color: #2F3286 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
+        font-size: 18px !important;
+    }
+    .stButton > button:hover {
+        background-color: #24265e !important;
     }
     @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.8) rotate(-2deg); }
