@@ -124,7 +124,7 @@ if not st.session_state.lista_carregada:
 if st.session_state.lista_carregada:
     
     if not st.session_state.mostrar_resultado:
-        st.header("🎯 Realizar Sorteio", divider="orange")
+        #st.header("🎯 Realizar Sorteio", divider="orange")
         
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
