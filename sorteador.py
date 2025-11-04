@@ -52,7 +52,7 @@ st.markdown("""
         font-weight: bold;
         padding: 20px;
     }
-    /* 🔵 Cor dos botões alterada */
+
     .stButton > button {
         background-color: #2F3286 !important;
         color: white !important;
