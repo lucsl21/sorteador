@@ -26,43 +26,48 @@ if "ultimo_sorteado" not in st.session_state:
 if "mostrar_resultado" not in st.session_state:
     st.session_state.mostrar_resultado = False
 
-# CSS personalizado
+# 🎨 CSS personalizado
 st.markdown("""
 <style>
     .main-header {
         text-align: center;
-        color: #36B227;
-        margin-bottom: 2rem;
+        color: #2F3286;
+        font-size: 56px;
+        font-weight: bold;
+        margin-bottom: 1rem;
     }
     .winner-animation {
         animation: fadeIn 1.2s ease-in-out;
         text-align: center;
-        font-size: 72px;
+        font-size: 80px;
         color: #28a745;
         font-weight: bold;
-        padding: 20px;
+        padding: 30px;
         border-radius: 15px;
         background: linear-gradient(135deg, #f5f5f5, #e8f5e8);
-        margin: 20px 0;
+        margin: 40px 0;
     }
     .countdown {
         text-align: center;
         color: #2F3286;
-        font-size: 36px;
+        font-size: 48px;
         font-weight: bold;
         padding: 20px;
     }
-
     .stButton > button {
         background-color: #2F3286 !important;
         color: white !important;
         border: none !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         font-weight: bold !important;
-        font-size: 18px !important;
+        font-size: 24px !important;
+        height: 3.5em !important;
     }
     .stButton > button:hover {
         background-color: #24265e !important;
+    }
+    .sidebar .sidebar-content {
+        font-size: 18px;
     }
     @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.8) rotate(-2deg); }
@@ -71,14 +76,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Cabeçalho
-st.markdown("<h1 class='main-header' style='color: #28a745;'>🎉 SORTEIO ENCONTRO PHARMIC</h1>", unsafe_allow_html=True)
+# 🖼️ Logo e Cabeçalho
+st.image("https://pharmic.com.br/wp-content/uploads/2023/03/logo-pharmic.png", width=260)  # Ajuste o tamanho se quiser
+st.markdown("<h1 class='main-header'>🎉 SORTEIO ENCONTRO PHARMIC 🎉</h1>", unsafe_allow_html=True)
 
 # Sidebar para controles
 with st.sidebar:
-    st.header("⚙️ Controles")
+    st.header("⚙️ Controles", divider="blue")
     
-    # Reiniciar sorteio
     if st.button("🔄 Reiniciar Sorteio", use_container_width=True):
         st.session_state.nomes_restantes = st.session_state.nomes_restantes + st.session_state.sorteados
         st.session_state.sorteados = []
@@ -89,7 +94,7 @@ with st.sidebar:
 
 # Upload do CSV
 if not st.session_state.lista_carregada:
-    st.header("📁 Carregar Lista de Participantes")
+    st.header("📁 Carregar Lista de Participantes", divider="green")
     arquivo = st.file_uploader("Enviar arquivo CSV", type=["csv"], help="Arquivo CSV com um nome por linha")
 
     if arquivo is not None:
@@ -98,7 +103,6 @@ if not st.session_state.lista_carregada:
             nomes = df[0].dropna().astype(str).str.strip().tolist()
             
             if nomes:
-                # Remove duplicatas mantendo a ordem
                 nomes_unicos = []
                 for nome in nomes:
                     if nome not in nomes_unicos:
@@ -110,7 +114,6 @@ if not st.session_state.lista_carregada:
                 st.session_state.historico_sorteios = []
                 
                 st.rerun()
-                
             else:
                 st.warning("⚠️ Nenhum nome válido encontrado no arquivo.")
                 
@@ -120,11 +123,9 @@ if not st.session_state.lista_carregada:
 # Função de sorteio
 if st.session_state.lista_carregada:
     
-    # Se não está mostrando resultado, mostra apenas o botão de sorteio
     if not st.session_state.mostrar_resultado:
-        st.header("🎯 Realizar Sorteio")
+        st.header("🎯 Realizar Sorteio", divider="orange")
         
-        # Botão de sorteio centralizado
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             sortear_btn = st.button(
@@ -139,7 +140,6 @@ if st.session_state.lista_carregada:
             st.balloons()
         
         if sortear_btn and st.session_state.nomes_restantes:
-            # Contagem regressiva
             countdown_placeholder = st.empty()
             for i in range(3, 0, -1):
                 countdown_placeholder.markdown(
@@ -149,26 +149,21 @@ if st.session_state.lista_carregada:
                 time.sleep(1)
             countdown_placeholder.empty()
 
-            # Sorteio
             sorteado = random.choice(st.session_state.nomes_restantes)
             st.session_state.nomes_restantes.remove(sorteado)
             st.session_state.sorteados.append(sorteado)
             st.session_state.ultimo_sorteado = sorteado
             st.session_state.mostrar_resultado = True
             
-            # Registrar no histórico com timestamp
             timestamp = datetime.now().strftime("%H:%M:%S")
             st.session_state.historico_sorteios.append((sorteado, timestamp))
             
             st.rerun()
     
-    # Se está mostrando resultado, mostra apenas o botão e o nome sorteado
     else:
-        # Container principal centralizado
         main_container = st.container()
         
         with main_container:
-            # Botão para novo sorteio
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 novo_sorteio_btn = st.button(
@@ -178,10 +173,7 @@ if st.session_state.lista_carregada:
                     disabled=not st.session_state.nomes_restantes
                 )
             
-            # Mostrar resultado com animação
             st.markdown(f'<div class="winner-animation">🎉 {st.session_state.ultimo_sorteado} 🎉</div>', unsafe_allow_html=True)
-            
-            # Efeitos visuais
             st.balloons()
         
         if novo_sorteio_btn:
