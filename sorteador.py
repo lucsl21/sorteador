@@ -97,6 +97,7 @@ if not st.session_state.lista_carregada:
                 st.session_state.lista_carregada = True
                 st.session_state.historico_sorteios = []
                 
+                st.success(f"✅ Lista carregada com sucesso! {len(nomes_unicos)} participantes carregados.")
                 st.rerun()
                 
             else:
