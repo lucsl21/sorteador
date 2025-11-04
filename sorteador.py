@@ -61,7 +61,7 @@ st.markdown("""
         border-radius: 10px !important;
         font-weight: bold !important;
         font-size: 36px !important;
-        height: 3.5em !important;
+        height: 80px  !important;
     }
     .stButton > button:hover {
         background-color: #24265e !important;
