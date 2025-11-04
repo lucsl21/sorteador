@@ -77,7 +77,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 🖼️ Logo e Cabeçalho
-st.image("https://pharmic.com.br/content/images/thumbs/0004402.jpeg?format=webp&quality=70", width=260)  # Ajuste o tamanho se quiser
+st.image("https://pharmic.com.br/Themes/FormulaCertaTheme/Content/images/logo.webp", width=260)  # Ajuste o tamanho se quiser
 st.markdown("<h1 class='main-header'>🎉 SORTEIO ENCONTRO PHARMIC 🎉</h1>", unsafe_allow_html=True)
 
 # Sidebar para controles
