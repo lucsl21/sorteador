@@ -60,7 +60,7 @@ st.markdown("""
         border: none !important;
         border-radius: 10px !important;
         font-weight: bold !important;
-        font-size: 46px !important;
+        font-size: 60px !important;
         height: 80px  !important;
     }
     .stButton > button:hover {
