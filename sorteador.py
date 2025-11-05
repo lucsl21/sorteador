@@ -78,7 +78,7 @@ st.markdown("""
 
 # Logo e Cabeçalho
 st.image("https://pharmic.com.br/Themes/FormulaCertaTheme/Content/images/logo.webp", width=280)  # Ajuste o tamanho se quiser
-st.markdown("<h1 class='main-header' font-size: 80px style='color:#1F3A7D;'>🎉 SORTEIO ENCONTRO EXCLUSIVO DA EQUIPE PHARMIC SAÚDE INTEGRATIVA</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header' font-size: 120px style='color:#1F3A7D;'>🎉 SORTEIO ENCONTRO EXCLUSIVO DA EQUIPE PHARMIC SAÚDE INTEGRATIVA</h1>", unsafe_allow_html=True)
 
 # Sidebar para controles
 with st.sidebar:
